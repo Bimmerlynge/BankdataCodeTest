@@ -35,8 +35,8 @@ Description:
 Retrieves all accounts in the system
 
 Example request:
-````bash
-curl http://localhost:8080/accounts
+````
+http://localhost:8080/accounts
 ````
 
 ### CreateAccount
@@ -75,6 +75,11 @@ Retrieves the account details for the specified account ID.
 #### Path Parameters
 - **id** (long): The unique identifier of the account to retrieve.
 
+Request Example:
+```
+http://localhost:8080/accounts/123
+```
+
 #### Response Body
 - **id** (long): The unique identifier of the account.
 - **firstname** (string): The first name of the account holder.
@@ -107,16 +112,15 @@ Updates the balance of the specified account by depositing the provided amount. 
 #### Request Parameters
 - **amount** (number): The amount to deposit into the account.
 
+Request Example:
+
+```http://localhost:8080/accounts/123/deposit?amount=20```
+
 #### Response Body
 - **id** (long): The unique identifier of the account.
 - **firstname** (string): The first name of the account holder.
 - **lastname** (string): The last name of the account holder.
 - **balance** (number): The updated balance of the account after deposit.
-
-
-Example:
-
-```http://localhost:8080/accounts/123/deposit?amount=20```
 
 Response Body Example:
 
