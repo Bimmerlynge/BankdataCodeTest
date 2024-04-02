@@ -8,8 +8,9 @@ bruges, se beskrivelsen af [endpoints](#endpoints).
 ### Indledende
 1. Klon projektet
     ``https://github.com/Bimmerlynge/BankdataCodeTest.git``
-2. Kør DemoApplication
-3. [Open Swagger UI](http://localhost:8080/swagger-ui/index.html#)
+2. SDK: openJDK 22, language level 17
+3. Kør DemoApplication
+4. [Open Swagger UI](http://localhost:8080/swagger-ui/index.html#)
 
 ## Endpoints
 
