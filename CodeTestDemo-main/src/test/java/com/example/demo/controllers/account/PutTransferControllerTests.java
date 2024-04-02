@@ -4,12 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.example.demo.application.AccountService;
 import com.example.demo.domain.Account;
 import com.example.demo.exceptions.AccountNotFoundException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 public class PutTransferControllerTests {
 
     @InjectMocks
-    private PutTransferMoneyController controller;
+    private TransferMoneyController controller;
     @Mock
     private AccountService accountService;
 

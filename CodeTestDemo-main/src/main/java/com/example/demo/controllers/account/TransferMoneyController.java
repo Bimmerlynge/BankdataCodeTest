@@ -1,24 +1,27 @@
 package com.example.demo.controllers.account;
 
 import com.example.demo.application.AccountService;
+import com.example.demo.application.IAccountService;
 import com.example.demo.domain.Account;
 import com.example.demo.exceptions.AccountNotFoundException;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class PutTransferMoneyController {
-    private final AccountService _accountService;
+public class TransferMoneyController {
+    private final IAccountService accountService;
 
     @Autowired
-    public PutTransferMoneyController(AccountService accountService) {
-        _accountService = accountService;
+    public TransferMoneyController(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @PutMapping("/transfer")
+    @Tag(name = "Accounts")
     public ResponseEntity<?> Put(@RequestBody TransferMoneyRequest request) throws AccountNotFoundException {
-        Account updated = _accountService.Transfer(request.getFromId(), request.getToId(), request.getAmount());
+        Account updated = accountService.Transfer(request.getFromId(), request.getToId(), request.getAmount());
         return ResponseEntity.ok(updated);
     }
 }

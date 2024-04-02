@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Service
 @PropertySource("classpath:api.properties")
-public class ExchangeService {
+public class ExchangeService implements IExchangeService {
     private final String apiKey;
     private final String hostAddress;
     private final RestTemplate restTemplate;

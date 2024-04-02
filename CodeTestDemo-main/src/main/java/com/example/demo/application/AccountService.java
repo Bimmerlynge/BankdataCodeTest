@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 //TODO some CQRS would be nice here instead of monolithic class
@@ -69,5 +70,8 @@ public class AccountService implements IAccountService {
 
         Deposit(to.get_id(), amount);
         return Withdraw(from.get_id(), amount);
+    }
+    public List<Account> GetAll() {
+        return _accountRepository.findAll();
     }
 }

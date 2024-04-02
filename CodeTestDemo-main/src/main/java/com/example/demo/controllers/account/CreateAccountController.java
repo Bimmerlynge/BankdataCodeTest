@@ -1,8 +1,10 @@
 package com.example.demo.controllers.account;
 
+import com.example.demo.application.IAccountService;
 import com.example.demo.domain.Account;
 import com.example.demo.application.AccountService;
 import com.example.demo.util.ValidationUtils;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,38 +14,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CreateAccountController {
-    private final AccountService _accountService;
+    private final IAccountService accountService;
 
     @Autowired
     public CreateAccountController(AccountService accountService) {
-        _accountService = accountService;
+        this.accountService = accountService;
     }
 
     @PostMapping("/accounts")
-    public ResponseEntity<?> createAccount(@RequestBody AccountRequest accountRequest) {
+    @Tag(name = "Accounts")
+    public ResponseEntity<?> createAccount(@RequestBody CreateAccountRequest accountRequest) {
         if (!accountRequest.IsValid()){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid request object");
         }
 
         String firstname = accountRequest.getFirstname();
-        String lastname = accountRequest.getFirstname();
+        String lastname = accountRequest.getLastname();
         double balance = accountRequest.getBalance();
 
-        Account newAccount = _accountService.CreateUser(firstname, lastname, balance);
+        Account newAccount = accountService.CreateUser(firstname, lastname, balance);
 
         return ResponseEntity.ok(newAccount);
     }
 }
 
-class AccountRequest{
+class CreateAccountRequest {
     private String firstname;
     private String lastname;
     private double balance;
 
-    public AccountRequest() {
+    public CreateAccountRequest() {
     }
 
-    public AccountRequest(String firstname, String lastname, double balance) {
+    public CreateAccountRequest(String firstname, String lastname, double balance) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.balance = balance;
