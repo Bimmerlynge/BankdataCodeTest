@@ -11,6 +11,10 @@ public class Exchange implements Serializable {
     public Exchange() {
     }
 
+    public Exchange(double result){
+        this.conversionResult = result;
+    }
+
     public double getConversionResult() {
         return conversionResult;
     }

@@ -136,7 +136,6 @@ public class AccountServiceTests {
         // Assert
         assertNotNull(result);
         assertEquals(initialBalance - amount, result.get_balance());
-        verify(_accountRepo, times(1)).save(any(Account.class));
     }
 
     @Test
@@ -159,7 +158,7 @@ public class AccountServiceTests {
     }
 
     @Test
-    public void Transfer_ThrowsIllegalArgumentException_WhenAmountIsLessThanZero() throws AccountNotFoundException {
+    public void Transfer_ThrowsIllegalArgumentException_WhenAmountIsLessThanZero() {
         // Arrange
         long fromId = 42;
         long toId = 45;

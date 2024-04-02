@@ -11,7 +11,7 @@ import java.util.Optional;
 
 //TODO some CQRS would be nice here instead of monolithic class
 @Service
-public class AccountService {
+public class AccountService implements IAccountService {
     private final IAccountRepository _accountRepository;
 
     @Autowired
